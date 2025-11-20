@@ -1,26 +1,37 @@
 // alert("Hi\nHi\nHi\nHi\nHi\nHi\nHi\nHi\nHi")
 const block = document.querySelector(".block");
 const block2 = document.querySelector(".block2");
-const dolist = document.querySelector(".do");
-const clear = document.querySelector(".clear");
 const save = document.querySelector(".submit");
 const form = document.querySelector(".form");
 const list = document.querySelector(".list");
-let i = 0,
-  arr = [];
 
-block2.innerHTML =
-  '<div class="block"><input class="do" type="text" value="none" disabled/><input class="clear" type="reset" value="Clear"/></div>';
-
-block2.style.display = "none";
 save.addEventListener("click", (e) => {
   e.preventDefault();
   if (!list.value.trim()) {
     alert("bosh maydon");
   } else {
-    arr[i] = list.value.trim();
-    i++;    
+    const block3 = document.createElement("div");
+    block3.classList.add("block");
+    block3.style.display="flex"
 
-    form.append(block2)
+    const elinp = document.createElement("input");
+    elinp.type = "text";
+    elinp.value = list.value;
+    elinp.disabled = true; 
+    elinp.classList.add("do");
+
+    const clear2 = document.createElement("input");
+    clear2.type = "button";
+    clear2.value = "Clear";
+    clear2.classList.add("clear");
+
+    clear2.addEventListener("click", () => {
+      block3.remove();
+    });
+
+    block3.append(elinp, clear2);
+    block2.append(block3);
+
+    list.value = "";
   }
 });
