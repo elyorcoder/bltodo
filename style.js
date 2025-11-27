@@ -4,6 +4,7 @@ const block2 = document.querySelector(".block2");
 const save = document.querySelector(".submit");
 const form = document.querySelector(".form");
 const list = document.querySelector(".list");
+const sel = document.querySelector("#level");
 
 save.addEventListener("click", (e) => {
   e.preventDefault();
@@ -12,13 +13,19 @@ save.addEventListener("click", (e) => {
   } else {
     const block3 = document.createElement("div");
     block3.classList.add("block");
-    block3.style.display="flex"
+    block3.style.display = "flex";
 
     const elinp = document.createElement("input");
     elinp.type = "text";
     elinp.value = list.value;
-    elinp.disabled = true; 
+    elinp.disabled = true;
     elinp.classList.add("do");
+
+    const select = document.createElement("input");
+    select.type = "text";
+    select.value = sel.value;
+    select.disabled = true;
+    select.classList.add("level");
 
     const clear2 = document.createElement("input");
     clear2.type = "button";
@@ -28,10 +35,10 @@ save.addEventListener("click", (e) => {
     clear2.addEventListener("click", () => {
       block3.remove();
     });
-
-    block3.append(elinp, clear2);
+    block3.append(elinp);
+    block3.append(select);
+    block3.append(clear2);
     block2.append(block3);
-
     list.value = "";
   }
 });
