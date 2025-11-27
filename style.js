@@ -5,6 +5,7 @@ const save = document.querySelector(".submit");
 const form = document.querySelector(".form");
 const list = document.querySelector(".list");
 const sel = document.querySelector("#level");
+const all = document.querySelector(".clearAll")
 
 save.addEventListener("click", (e) => {
   e.preventDefault();
@@ -41,4 +42,8 @@ save.addEventListener("click", (e) => {
     block2.append(block3);
     list.value = "";
   }
+  all.addEventListener("click", (a) =>{
+    a.preventDefault()
+    block2.innerHTML="";
+  })
 });
